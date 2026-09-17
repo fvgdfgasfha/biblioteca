@@ -1,0 +1,22 @@
+﻿@model biblioteka.Models.Author
+@{
+    ViewData["Title"] = "Додати автора";
+}
+
+<h2>Додати автора</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label">Ім'я</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Країна</label>
+                <input asp-for="Country" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+            <a asp-controller="Books" asp-action="Index" class="btn btn-secondary">Скасувати</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model biblioteka.Models.Book
+@{
+    ViewData["Title"] = "Додати книгу";
+}
+
+<h2>Додати книгу</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label">Назва книги</label>
+                <input asp-for="Title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Рік видання</label>
+                <input asp-for="PublicationYear" type="number" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Автор</label>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.Authors" required>
+                    <option value="">-- Оберіть автора --</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Додати</button>
+            <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
+        </form>
+    </div>
+</div>

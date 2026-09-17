@@ -1,0 +1,39 @@
+﻿@model IEnumerable<biblioteka.Models.Book>
+@{
+    ViewData["Title"] = "Список книг";
+}
+
+<h2>Список книг</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Додати книгу</a>
+    <a asp-controller="Authors" asp-action="Create" class="btn btn-secondary">Додати автора</a>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Рік</th>
+            <th>Автор</th>
+            <th>Країна автора</th>
+            <th style="width: 100px;">Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.PublicationYear</td>
+                <td>@item.Author?.Name</td>
+                <td>@item.Author?.Country</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Видалити книгу?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
